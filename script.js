@@ -28,7 +28,7 @@ const grid = document.getElementById("word-grid");
 const wordList = document.getElementById("word-list");
 const description = document.getElementById("word-description");
 
-grid.style.gridTemplateColumns = `repeat(22, 40px)`;
+// grid.style.gridTemplateColumns = `repeat(22, 40px)`;
 
 grid.innerHTML = staticGrid.map(row => 
     row.map(letter => `<div class='cell'>${letter}</div>`).join("")
