@@ -5,6 +5,31 @@ const words = [
     "DETERMINANTES", "ATENCAOPRIMARIA", "ANVISA", "MODELOSISTEMICO", "PREVENCAOPRIMARIA"
 ];
 
+const descriptions = {
+    "SAUDE": "Campo do conhecimento que visa promover a saúde da população.",
+    "NHS": "Sistema Nacional de Saúde do Reino Unido.",
+    "VACINA": "Substância que estimula o sistema imunológico.",
+    "ILUMINISMO": "Movimento filosófico que incentivou o pensamento científico.",
+    "COLERA": "Doença infecciosa transmitida por água contaminada.",
+    "SUS": "Sistema Único de Saúde brasileiro.",
+    "CHADWICK": "Pioneiro na saúde pública e saneamento.",
+    "PREPATOGENICO": "Fase antes do início da doença.",
+    "PATOGENICO": "Fase em que a doença já se manifesta.",
+    "PREVENCAO": "Ações para reduzir riscos e evitar doenças.",
+    "NUTRICIONISTA": "Profissional que orienta sobre alimentação.",
+    "SAUDEMENTAL": "Estado de bem-estar psicológico.",
+    "EQUIDADE": "Distribuição justa de recursos de saúde.",
+    "UNIDADE": "Local de atendimento em um sistema de saúde.",
+    "IMUNIZACAO": "Processo de tornar alguém imune a uma doença.",
+    "BEMESTAR": "Estado geral de saúde física e mental.",
+    "PACTOPELASAÚDE": "Acordo para melhorar o SUS no Brasil.",
+    "DETERMINANTES": "Fatores que influenciam a saúde.",
+    "ATENCAOPRIMARIA": "Primeiro nível de contato com o sistema de saúde.",
+    "ANVISA": "Agência reguladora da vigilância sanitária no Brasil.",
+    "MODELOSISTEMICO": "Abordagem que vê a saúde como um sistema integrado.",
+    "PREVENCAOPRIMARIA": "Ações para evitar o surgimento de doenças."
+};
+
 const staticGrid = [
     ["A", "C", "B", "N", "P", "I", "D", "I", "M", "U", "N", "I", "Z", "A", "Ç", "Ã", "O", "S", "N", "T", "E", "T"],
     ["T", "H", "E", "M", "O", "D", "E", "L", "O", "S", "I", "S", "T", "E", "M", "I", "C", "O", "N", "O", "B", "N"],
