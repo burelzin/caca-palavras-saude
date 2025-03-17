@@ -9,9 +9,23 @@
 <body>
     <h1>Caça-Palavras da Saúde</h1>
     <p>Encontre as palavras e aprenda sobre elas!</p>
-    <div id="word-grid" class="grid"></div>
-    <ul id="word-list"></ul>
-    <p id="word-description"></p>
+    <div class="teste">
+        <div id="word-grid" class="grid"></div>
+        <div>
+            <h2>Palavras:</h2>
+            <ul id="word-list"></ul>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="word-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-btn" class="close">&times;</span>
+            <h2 id="word-title">Descrição da Palavra</h2>
+            <p id="word-description">Descrição não encontrada.</p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

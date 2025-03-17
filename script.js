@@ -1,12 +1,12 @@
 const words = [
-    "SAUDECOLETIVA", "NHS", "VACINA", "ILUMINISMO", "COLERA", "SUS", "CHADWICK", 
-    "PREPATOGENICO", "PATOGENICO", "PREVENCAO", "NUTRICIONISTA", "SAUDEMENTAL", 
-    "EQUIDADE", "UNIDADE", "IMUNIZACAO", "BEMESTAR", "PACTOPELASAUDE", 
-    "DETERMINANTES", "ATENCAOPRIMARIA", "ANVISA", "MODELOSISTEMICO", "PREVENCAOPRIMARIA"
+    "SAUDE COLETIVA", "NHS", "VACINA", "ILUMINISMO", "COLERA", "SUS", "CHADWICK", 
+    "PREPATOGENICO", "PATOGENICO", "PREVENCAO", "NUTRICIONISTA", "SAUDE MENTAL", 
+    "EQUIDADE", "UNIDADE", "IMUNIZACAO", "BEM ESTAR", "PACTO PELA SAUDE", 
+    "DETERMINANTES", "ATENCAO PRIMARIA", "ANVISA", "MODELO SISTEMICO", "PREVENCAO PRIMARIA"
 ];
 
 const descriptions = {
-    "SAUDE": "Campo do conhecimento que visa promover a saúde da população.",
+    "SAUDE COLETIVA": "Campo do conhecimento que visa promover a saúde da população.",
     "NHS": "Sistema Nacional de Saúde do Reino Unido.",
     "VACINA": "Substância que estimula o sistema imunológico.",
     "ILUMINISMO": "Movimento filosófico que incentivou o pensamento científico.",
@@ -17,17 +17,17 @@ const descriptions = {
     "PATOGENICO": "Fase em que a doença já se manifesta.",
     "PREVENCAO": "Ações para reduzir riscos e evitar doenças.",
     "NUTRICIONISTA": "Profissional que orienta sobre alimentação.",
-    "SAUDEMENTAL": "Estado de bem-estar psicológico.",
+    "SAUDE MENTAL": "Estado de bem-estar psicológico.",
     "EQUIDADE": "Distribuição justa de recursos de saúde.",
     "UNIDADE": "Local de atendimento em um sistema de saúde.",
     "IMUNIZACAO": "Processo de tornar alguém imune a uma doença.",
-    "BEMESTAR": "Estado geral de saúde física e mental.",
-    "PACTOPELASAÚDE": "Acordo para melhorar o SUS no Brasil.",
+    "BEM ESTAR": "Estado geral de saúde física e mental.",
+    "PACTO PELA SAUDE": "Acordo para melhorar o SUS no Brasil.",
     "DETERMINANTES": "Fatores que influenciam a saúde.",
-    "ATENCAOPRIMARIA": "Primeiro nível de contato com o sistema de saúde.",
+    "ATENCAO PRIMARIA": "Primeiro nível de contato com o sistema de saúde.",
     "ANVISA": "Agência reguladora da vigilância sanitária no Brasil.",
     "MODELOSISTEMICO": "Abordagem que vê a saúde como um sistema integrado.",
-    "PREVENCAOPRIMARIA": "Ações para evitar o surgimento de doenças."
+    "PREVENCAO PRIMARIA": "Ações para evitar o surgimento de doenças."
 };
 
 const staticGrid = [
@@ -52,20 +52,58 @@ const staticGrid = [
 const grid = document.getElementById("word-grid");
 const wordList = document.getElementById("word-list");
 const description = document.getElementById("word-description");
+const title = document.getElementById("word-title");
+const modal = document.getElementById("word-modal");
+const closeBtn = document.getElementById("close-btn");
 
 grid.innerHTML = staticGrid.map(row => 
     row.map(letter => `<div class='cell'>${letter}</div>`).join("")
 ).join("");
 
 function displayWordList() {
+    wordList.innerHTML = "";  // Limpar a lista antes de adicionar novamente as palavras
     words.forEach(word => {
         let listItem = document.createElement("li");
         listItem.textContent = word;
         listItem.onclick = () => {
-            description.textContent = descriptions[word] || "Descrição não encontrada.";
+            // Atualiza a descrição da palavra no modal
+            title.textContent = word;
+            console.log(descriptions[word])
+            description.textContent = descriptions[word];
+            modal.style.display = "block"; // Exibe o modal quando a palavra for clicada
         };
         wordList.appendChild(listItem);
     });
 }
 
 displayWordList();
+
+
+// Fecha o modal quando o usuário clicar no "X"
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+// Fecha o modal quando o usuário clicar fora da área do modal
+window.onclick = (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+// Fecha o modal ao pressionar a tecla "Esc"
+window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.style.display === "block") {
+        modal.style.display = "none";
+    }
+});
+
+// Função para selecionar ou desmarcar uma célula ao clicar
+grid.addEventListener("click", (event) => {
+    const clickedCell = event.target;
+
+    if (clickedCell.classList.contains("cell")) {
+        // Alterna a classe 'selected' na célula clicada
+        clickedCell.classList.toggle("selected");
+    }
+});
