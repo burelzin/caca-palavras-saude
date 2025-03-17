@@ -32,4 +32,15 @@ grid.innerHTML = staticGrid.map(row =>
     row.map(letter => `<div class='cell'>${letter}</div>`).join("")
 ).join("");
 
+function displayWordList() {
+    words.forEach(word => {
+        let listItem = document.createElement("li");
+        listItem.textContent = word;
+        listItem.onclick = () => {
+            description.textContent = descriptions[word] || "Descrição não encontrada.";
+        };
+        wordList.appendChild(listItem);
+    });
+}
+
 displayWordList();
