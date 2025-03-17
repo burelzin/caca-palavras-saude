@@ -6,7 +6,7 @@ const words = [
 ];
 
 const descriptions = {
-    "SAUDECOLETIVA": "Campo do conhecimento que visa promover a saúde da população.",
+    "SAUDE": "Campo do conhecimento que visa promover a saúde da população.",
     "NHS": "Sistema Nacional de Saúde do Reino Unido.",
     "VACINA": "Substância que estimula o sistema imunológico.",
     "ILUMINISMO": "Movimento filosófico que incentivou o pensamento científico.",
@@ -22,7 +22,7 @@ const descriptions = {
     "UNIDADE": "Local de atendimento em um sistema de saúde.",
     "IMUNIZACAO": "Processo de tornar alguém imune a uma doença.",
     "BEMESTAR": "Estado geral de saúde física e mental.",
-    "PACTOPELASAUDE": "Acordo para melhorar o SUS no Brasil.",
+    "PACTOPELASAÚDE": "Acordo para melhorar o SUS no Brasil.",
     "DETERMINANTES": "Fatores que influenciam a saúde.",
     "ATENCAOPRIMARIA": "Primeiro nível de contato com o sistema de saúde.",
     "ANVISA": "Agência reguladora da vigilância sanitária no Brasil.",
@@ -39,19 +39,19 @@ const staticGrid = [
     ["Ã", "Y", "I", "N", "T", "E", "A", "N", "F", "U", "N", "C", "Q", "E", "T", "S", "C", "C", "F", "A", "S", "E"],
     ["O", "S", "P", "A", "C", "T", "O", "P", "E", "L", "A", "S", "A", "U", "D", "E", "I", "E", "T", "E", "T", "O"],
     ["P", "E", "U", "E", "R", "A", "T", "I", "N", "U", "T", "R", "I", "C", "I", "O", "N", "I", "S", "T", "A", "H"],
+    ["R", "A", "U", "S", "F", "X", "O", "H", "C", "P", "H", "S", "U", "N", "I", "D", "A", "D", "E", "I", "R", "E"],
+    ["I", "N", "S", "T", "A", "F", "N", "G", "H", "B", "G", "A", "N", "S", "O", "L", "A", "H", "D", "B", "A", "E"],
+    ["M", "A", "F", "E", "N", "N", "E", "I", "A", "L", "C", "U", "N", "E", "I", "S", "C", "D", "E", "A", "A", "E"],
+    ["A", "U", "E", "R", "V", "H", "E", "E", "D", "H", "H", "P", "D", "R", "E", "L", "N", "E", "E", "H", "O", "V"],
+    ["R", "T", "T", "N", "I", "G", "S", "F", "W", "P", "R", "É", "P", "A", "T", "O", "G", "E", "N", "I", "C", "O"],
+    ["I", "A", "N", "L", "S", "P", "E", "E", "I", "L", "U", "M", "I", "N", "I", "S", "M", "O", "A", "I", "H", "U"],
+    ["A", "L", "M", "N", "A", "T", "H", "I", "C", "E", "U", "A", "H", "E", "L", "C", "O", "L", "E", "R", "A", "I"],
+    ["U", "R", "U", "N", "T", "L", "A", "A", "K", "S", "A", "U", "D", "E", "C", "O", "L", "E", "T", "I", "V", "A"]
 ];
 
 const grid = document.getElementById("word-grid");
 const wordList = document.getElementById("word-list");
-
-grid.style.gridTemplateColumns = `repeat(22, minmax(25px, 40px))`;
-grid.style.gridTemplateRows = `repeat(16, minmax(25px, 40px))`;
-grid.style.overflow = "auto";
-grid.style.maxWidth = "90vw";
-grid.style.display = "grid";
-grid.style.margin = "auto";
-grid.style.justifyContent = "center";
-grid.style.alignItems = "center";
+const description = document.getElementById("word-description");
 
 grid.innerHTML = staticGrid.map(row => 
     row.map(letter => `<div class='cell'>${letter}</div>`).join("")
@@ -61,25 +61,11 @@ function displayWordList() {
     words.forEach(word => {
         let listItem = document.createElement("li");
         listItem.textContent = word;
-        listItem.classList.add("word-item");
-        listItem.setAttribute("data-description", descriptions[word] || "Descrição não encontrada.");
+        listItem.onclick = () => {
+            description.textContent = descriptions[word] || "Descrição não encontrada.";
+        };
         wordList.appendChild(listItem);
     });
 }
-
-document.addEventListener("mouseover", function (event) {
-    if (event.target.classList.contains("word-item")) {
-        const popover = document.createElement("div");
-        popover.classList.add("popover");
-        popover.textContent = event.target.getAttribute("data-description");
-        document.body.appendChild(popover);
-        popover.style.left = `${event.pageX + 10}px`;
-        popover.style.top = `${event.pageY + 10}px`;
-
-        event.target.addEventListener("mouseleave", () => {
-            popover.remove();
-        }, { once: true });
-    }
-});
 
 displayWordList();
