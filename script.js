@@ -28,15 +28,6 @@ const grid = document.getElementById("word-grid");
 const wordList = document.getElementById("word-list");
 const description = document.getElementById("word-description");
 
-grid.style.gridTemplateColumns = `repeat(22, minmax(25px, 40px))`;
-grid.style.gridTemplateRows = `repeat(16, minmax(25px, 40px))`;
-grid.style.overflow = "auto";
-grid.style.maxWidth = "90vw";
-grid.style.display = "grid";
-grid.style.margin = "auto";
-grid.style.justifyContent = "center";
-grid.style.alignItems = "center";
-
 grid.innerHTML = staticGrid.map(row => 
     row.map(letter => `<div class='cell'>${letter}</div>`).join("")
 ).join("");
