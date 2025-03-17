@@ -6,48 +6,32 @@ const words = [
 ];
 
 const staticGrid = [
-    ["S", "A", "U", "D", "E", "C", "O", "L", "E", "T", "I", "V", "A", "X", "X"],
-    ["X", "N", "H", "S", "X", "V", "A", "C", "I", "N", "A", "X", "X", "X", "X"],
-    ["I", "L", "U", "M", "I", "N", "I", "S", "M", "O", "X", "X", "X", "X", "X"],
-    ["C", "O", "L", "E", "R", "A", "X", "S", "U", "S", "X", "X", "X", "X", "X"],
-    ["C", "H", "A", "D", "W", "I", "C", "K", "X", "X", "X", "X", "X", "X", "X"],
-    ["P", "R", "E", "P", "A", "T", "O", "G", "E", "N", "I", "C", "O", "X", "X"],
-    ["P", "A", "T", "O", "G", "E", "N", "I", "C", "O", "X", "X", "X", "X", "X"],
-    ["P", "R", "E", "V", "E", "N", "C", "A", "O", "X", "X", "X", "X", "X", "X"],
-    ["N", "U", "T", "R", "I", "C", "I", "O", "N", "I", "S", "T", "A", "X", "X"],
-    ["S", "A", "U", "D", "E", "M", "E", "N", "T", "A", "L", "X", "X", "X", "X"],
-    ["E", "Q", "U", "I", "D", "A", "D", "E", "X", "X", "X", "X", "X", "X", "X"],
-    ["U", "N", "I", "D", "A", "D", "E", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["I", "M", "U", "N", "I", "Z", "A", "C", "A", "O", "X", "X", "X", "X", "X"],
-    ["B", "E", "M", "E", "S", "T", "A", "R", "X", "X", "X", "X", "X", "X", "X"],
-    ["P", "A", "C", "T", "O", "P", "E", "L", "A", "S", "A", "U", "D", "E", "X"],
+    ["A", "C", "B", "N", "P", "I", "D", "I", "M", "U", "N", "I", "Z", "A", "Ç", "Ã", "O", "S", "N", "T", "E", "T"],
+    ["T", "H", "E", "M", "O", "D", "E", "L", "O", "S", "I", "S", "T", "E", "M", "I", "C", "O", "N", "O", "B", "N"],
+    ["E", "U", "T", "A", "L", "E", "A", "R", "O", "D", "E", "T", "E", "R", "M", "I", "N", "A", "N", "T", "E", "S"],
+    ["N", "S", "Á", "U", "D", "E", "M", "E", "N", "T", "A", "L", "T", "E", "N", "W", "V", "S", "D", "O", "M", "L"],
+    ["Ç", "Y", "R", "V", "C", "O", "E", "O", "G", "H", "A", "E", "O", "S", "E", "U", "A", "C", "O", "U", "E", "R"],
+    ["Ã", "Y", "I", "N", "T", "E", "A", "N", "F", "U", "N", "C", "Q", "E", "T", "S", "C", "C", "F", "A", "S", "E"],
+    ["O", "S", "P", "A", "C", "T", "O", "P", "E", "L", "A", "S", "A", "U", "D", "E", "I", "E", "T", "E", "T", "O"],
+    ["P", "E", "U", "E", "R", "A", "T", "I", "N", "U", "T", "R", "I", "C", "I", "O", "N", "I", "S", "T", "A", "H"],
+    ["R", "A", "U", "S", "F", "X", "O", "H", "C", "P", "H", "S", "U", "N", "I", "D", "A", "D", "E", "I", "R", "E"],
+    ["I", "N", "S", "T", "A", "F", "N", "G", "H", "B", "G", "A", "N", "S", "O", "L", "A", "H", "D", "B", "A", "E"],
+    ["M", "A", "F", "E", "N", "N", "E", "I", "A", "L", "C", "U", "N", "E", "I", "S", "C", "D", "E", "A", "A", "E"],
+    ["A", "U", "E", "R", "V", "H", "E", "E", "D", "H", "H", "P", "D", "R", "E", "L", "N", "E", "E", "H", "O", "V"],
+    ["R", "T", "T", "N", "I", "G", "S", "F", "W", "P", "R", "É", "P", "A", "T", "O", "G", "E", "N", "I", "C", "O"],
+    ["I", "A", "N", "L", "S", "P", "E", "E", "I", "L", "U", "M", "I", "N", "I", "S", "M", "O", "A", "I", "H", "U"],
+    ["A", "L", "M", "N", "A", "T", "H", "I", "C", "E", "U", "A", "H", "E", "L", "C", "O", "L", "E", "R", "A", "I"],
+    ["U", "R", "U", "N", "T", "L", "A", "A", "K", "S", "A", "U", "D", "E", "C", "O", "L", "E", "T", "I", "V", "A"]
 ];
 
 const grid = document.getElementById("word-grid");
 const wordList = document.getElementById("word-list");
 const description = document.getElementById("word-description");
 
-function generateStaticGrid() {
-    for (let i = 0; i < staticGrid.length; i++) {
-        for (let j = 0; j < staticGrid[i].length; j++) {
-            let cell = document.createElement("div");
-            cell.classList.add("cell");
-            cell.textContent = staticGrid[i][j];
-            grid.appendChild(cell);
-        }
-    }
-}
+grid.style.gridTemplateColumns = `repeat(22, 40px)`;
 
-function displayWordList() {
-    words.forEach(word => {
-        let listItem = document.createElement("li");
-        listItem.textContent = word;
-        listItem.onclick = () => {
-            description.textContent = `A palavra "${word}" está no caça-palavras!`;
-        };
-        wordList.appendChild(listItem);
-    });
-}
+grid.innerHTML = staticGrid.map(row => 
+    row.map(letter => `<div class='cell'>${letter}</div>`).join("")
+).join("");
 
-generateStaticGrid();
 displayWordList();
