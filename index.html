@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça-Palavras da Saúde</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            gap: 5px;
+            justify-content: center;
+            margin: 20px auto;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: max-content;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #ecf0f1;
+            transition: 0.3s;
+            animation: bounceIn 0.8s ease-in-out;
+        }
+        .cell:hover {
+            background: #d6eaf8;
+            transform: scale(1.1);
+        }
+        .found {
+            background-color: #f1c40f;
+            color: white;
+            transition: 0.5s;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        li:hover {
+            color: #2980b9;
+            transform: scale(1.1);
+        }
+        #word-description {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounceIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Caça-Palavras da Saúde</h1>
+    <p>Encontre as palavras e aprenda sobre elas!</p>
+    <div id="word-grid" class="grid"></div>
+    <ul id="word-list"></ul>
+    <p id="word-description"></p>
+    
+    <script>
+        const words = [
+            "SAUDE", "NHS", "VACINA", "ILUMINISMO", "COLERA", "SUS", "CHADWICK", 
+            "PREPATOGENICO", "PATOGENICO", "PREVENCAO", "NUTRICIONISTA", "SAUDEMENTAL", 
+            "EQUIDADE", "UNIDADE", "IMUNIZACAO", "BEMESTAR", "PACTOPELASAÚDE", 
+            "DETERMINANTES", "ATENCAOPRIMARIA", "ANVISA", "MODELOSISTEMICO", "PREVENCAOPRIMARIA"
+        ];
+        
+        const descriptions = {
+            "SAUDE": "Campo do conhecimento que visa promover a saúde da população.",
+            "NHS": "Sistema Nacional de Saúde do Reino Unido.",
+            "VACINA": "Substância que estimula o sistema imunológico.",
+            "ILUMINISMO": "Movimento filosófico que incentivou o pensamento científico.",
+            "COLERA": "Doença infecciosa transmitida por água contaminada.",
+            "SUS": "Sistema Único de Saúde brasileiro.",
+            "CHADWICK": "Pioneiro na saúde pública e saneamento.",
+            "PREPATOGENICO": "Fase antes do início da doença.",
+            "PATOGENICO": "Fase em que a doença já se manifesta.",
+            "PREVENCAO": "Ações para reduzir riscos e evitar doenças.",
+            "NUTRICIONISTA": "Profissional que orienta sobre alimentação.",
+            "SAUDEMENTAL": "Estado de bem-estar psicológico.",
+            "EQUIDADE": "Distribuição justa de recursos de saúde.",
+            "UNIDADE": "Local de atendimento em um sistema de saúde.",
+            "IMUNIZACAO": "Processo de tornar alguém imune a uma doença.",
+            "BEMESTAR": "Estado geral de saúde física e mental.",
+            "PACTOPELASAÚDE": "Acordo para melhorar o SUS no Brasil.",
+            "DETERMINANTES": "Fatores que influenciam a saúde.",
+            "ATENCAOPRIMARIA": "Primeiro nível de contato com o sistema de saúde.",
+            "ANVISA": "Agência reguladora da vigilância sanitária no Brasil.",
+            "MODELOSISTEMICO": "Abordagem que vê a saúde como um sistema integrado.",
+            "PREVENCAOPRIMARIA": "Ações para evitar o surgimento de doenças."
+        };
+        
+        const gridSize = 10;
+        const grid = document.getElementById("word-grid");
+        const wordList = document.getElementById("word-list");
+        const description = document.getElementById("word-description");
+        
+        function generateGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    let cell = document.createElement("div");
+                    cell.classList.add("cell");
+                    cell.textContent = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                    grid.appendChild(cell);
+                }
+            }
+        }
+        
+        function displayWordList() {
+            words.forEach(word => {
+                let listItem = document.createElement("li");
+                listItem.textContent = word;
+                listItem.onclick = () => {
+                    description.textContent = descriptions[word] || "Descrição não encontrada.";
+                };
+                wordList.appendChild(listItem);
+            });
+        }
+        
+        generateGrid();
+        displayWordList();
+    </script>
+</body>
+</html>
