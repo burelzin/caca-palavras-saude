@@ -122,3 +122,9 @@ li:hover {
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+.selected:hover {
+    background-color: #023047; /* Cor de fundo quando a célula for selecionada */
+    border: 1px solid #87bce6; /* Borda laranja */
+    color: white;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
